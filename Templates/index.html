@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'login' %}">Upload</a>
+  </li>
+{% endblock  %}
+{% block category %}
+<div class="cat">
+    <form action="{% url 'cat' %}" method="get">
+        <div class="cat-list">
+            <ul>
+                <li><button type="submit" value='anime' name='c'>Anime</button></li>
+                <li><button type="submit" value='animal' name='c'>Animal</button></li>
+                <li><button type="submit" value='cars' name='c'>Cars</button></li>
+                <li><button type="submit" value='flowers' name='c'>Flowers</button></li>
+                <li><button type="submit" value='games' name='c'>Games</button></li>
+                <li><button type="submit" value='nature' name='c'>Nature</button></li>
+                <li><button type="submit" value='movies' name='c'>Movies</button></li>
+                <li><button type="submit" value='photography' name='c'>Photography</button></li>
+                <li><button type="submit" value='random' name='c'>Random</button></li>
+                <li><button type="submit" value='tech' name='c'>Tech</button></li>
+            </ul>
+        </div>
+    </form>
+   
+</div>
+{% endblock  %}
+{% block context %}
+    <div class="wrap_content">
+        {% for post in object_list %}
+                <div class='column'>
+                    <div class="container">
+                        <a href="{{post.cover.url}}"><img src="{{post.cover.url}}" alt="{{post.title}}" class="image"></img></a>
+                        <div class="middle">
+                            <div class="detail">{{post.title}}</div>
+                        </div>
+                    </div>
+                    <div class="download-btn">
+                        <button class="btn"><i class="fa fa-download"><a href="{{post.cover.url}}" download>Download</a></i></button>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock  %}
+

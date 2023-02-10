@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+
+
+{% block context %}
+  <div class='wrap_content'>
+      {% for post in object_list %}
+        <div class='column'>
+            <div class="container">
+                <a href="{{post.cover.url|urlencode}}"><img src="{{post.cover.url}}" alt="{{post.title}}" class="image"></img></a>
+                <div class="middle">
+                    <div class="detail">{{post.title}}</div>
+                </div>
+            </div>
+            <div class="download-btn">
+                <button class="btn"><i class="fa fa-download"><a href="{{post.cover.url}}" download>Download</a></i></button>
+            </div>
+            
+        </div>
+      {% endfor %}
+  </div>
+{% endblock  %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block context %}
+{% if submit %}
+<center>
+    <p>Upload successfully!</p>
+</center>
+
+{% else %}
+    <div class='upload-form'>
+        <form method=POST enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <center>
+                    <ul class="errorlist">
+                        <li><p>{{form.errors.username}}</p></li>
+                        <li><p>{{form.errors.password2}}</p></li>
+                    </ul>
+                </center>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder='File Name' name='name' autocomplete="off">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Img</label>
+                <input type="file" class="form-control" placeholder='Chosen File' name='img' accept='image/*' autocomplete="off">
+            </div>
+            <button type="submit" class='btn btn-primary'>Upload</button>
+        </form>
+    </div>
+{% endif %}
+{% endblock  %}

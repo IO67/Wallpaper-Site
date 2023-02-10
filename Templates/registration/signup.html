@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block auth %}
+    <div class='errors'>
+        {% if form.errors.username%}
+            username is taken.
+            {% else %}
+                {{form.errors.password2}}
+        {% endif %}
+    </div>
+    <div class="signup_form">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" placeholder='Username' name='username' autocomplete="off">
+                    <div id="emailHelp" class="form-text" >We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder='Email' name='email' autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Password</label>
+                    <input type="password" class="form-control" placeholder='Password' name='password1' autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Password Confirmation</label>
+                    <input type="password" class="form-control" placeholder='Password' name='password2' autocomplete="off">
+                </div>
+            </div>
+            <button type="submit" class='btn btn-primary'>Sign Up</button>
+        </form>
+    </div>
+{% endblock  %}

@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block auth %}
+    <div class="login_form">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+              <center>
+                  <ul class="errorlist">
+                      <li><p>{{form.errors.username}}</p></li>
+                      <li><p>{{form.errors.password2}}</p></li>
+                  </ul>
+              </center>
+          </div>
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" placeholder='Username' name='username' autocomplete="off">
+                <div id="emailHelp" class="form-text" >We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label  class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder='Password' name='password' autocomplete="off">
+              </div>
+            <button type="submit" class='btn btn-primary'>Login</button>
+        </form>
+        <br></br>
+        <p>Not a User?Sign up <a href="{% url 'signup' %}">Here...</a></p>
+    </div>
+{% endblock  %}
